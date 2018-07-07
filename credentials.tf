@@ -5,5 +5,5 @@ resource "random_string" "username" {
 
 resource "random_string" "password" {
   length  = 16
-  special = true
+  special = false
 }
