@@ -24,6 +24,7 @@ resource "azurerm_mysql_server" "server" {
   administrator_login          = "${random_string.username.result}"
   administrator_login_password = "${random_string.password.result}"
   version                      = "5.7"
+  ssl_enforcement              = "Disabled"
 }
 
 resource "azurerm_mysql_database" "db" {
