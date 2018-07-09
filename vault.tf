@@ -13,7 +13,7 @@ resource "vault_generic_secret" "credentials" {
 }
 
 resource "vault_mount" "db" {
-  path = "db-${var.server_name}"
+  path = "db-${var.server_name}-ro"
   type = "database"
 }
 
@@ -38,7 +38,7 @@ data "template_file" "vault_backend_connection" {
 resource "vault_database_secret_backend_connection" "mysql" {
   backend       = "${vault_mount.db.path}"
   name          = "${var.db_name}"
-  allowed_roles = ["mysql_admin", "mysql_ro"]
+  allowed_roles = ["mysql_crud", "mysql_ro"]
 
   depends_on = [
     "azurerm_mysql_firewall_rule.fw_rule_vault",
@@ -54,6 +54,8 @@ resource "vault_database_secret_backend_role" "mysql_crud" {
   name                = "mysql_crud"
   db_name             = "${var.db_name}"
   creation_statements = "CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}'; grant SELECT,INSERT,UPDATE,DELETE on ${var.db_name}.* to '{{name}}'@'%'"
+  default_ttl         = "${var.default_ttl}"
+  max_ttl             = "${var.max_ttl}"
 }
 
 resource "vault_database_secret_backend_role" "mysql_ro" {
@@ -61,6 +63,8 @@ resource "vault_database_secret_backend_role" "mysql_ro" {
   name                = "mysql_ro"
   db_name             = "${var.db_name}"
   creation_statements = "CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}'; grant SELECT on ${var.db_name}.* to '{{name}}'@'%'"
+  default_ttl         = "${var.default_ttl}"
+  max_ttl             = "${var.max_ttl}"
 }
 
 # CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT SELECT ON *.* TO '{{name}}'@'%';
