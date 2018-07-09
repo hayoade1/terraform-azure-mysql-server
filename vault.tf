@@ -12,10 +12,6 @@ resource "vault_generic_secret" "credentials" {
   data_json = "${data.template_file.credentials.rendered}"
 }
 
-data "vault_generic_secret" "db_credentials" {
-  path = "secret/database/${var.server_name}/${var.db_name}/credentials"
-}
-
 resource "vault_mount" "db" {
   path = "db-${var.server_name}"
   type = "database"
