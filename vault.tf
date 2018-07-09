@@ -66,7 +66,7 @@ resource "vault_database_secret_backend_role" "mysql_ro" {
 # CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT SELECT ON *.* TO '{{name}}'@'%';
 
 data "template_file" "mysql_ro" {
-  template = "${file("./vault_policy_templates/mysql_ro.hcl")}"
+  template = "${file("./vault_policy_templates/mysql_ro.hcl.tpl")}"
 
   vars {
     db_name = "${var.db_name}"
@@ -79,7 +79,7 @@ resource "vault_policy" "mysql_ro" {
 }
 
 data "template_file" "mysql_crud" {
-  template = "${file("./vault_policy_templates/mysql_crud.hcl")}"
+  template = "${file("./vault_policy_templates/mysql_crud.hcl.tpl")}"
 
   vars {
     db_name = "${var.db_name}"
