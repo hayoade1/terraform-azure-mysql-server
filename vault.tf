@@ -49,7 +49,7 @@ resource "vault_database_secret_backend_connection" "mysql" {
   }
 }
 
-resource "vault_database_secret_backend_role" "mysql_admin" {
+resource "vault_database_secret_backend_role" "mysql_crud" {
   backend             = "${vault_mount.db.path}"
   name                = "mysql_crud"
   db_name             = "${var.db_name}"
