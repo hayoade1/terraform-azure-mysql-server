@@ -40,6 +40,10 @@ resource "vault_database_secret_backend_connection" "mysql" {
   name          = "${var.db_name}"
   allowed_roles = ["mysql_admin", "mysql_ro"]
 
+  depends_on = [
+    "azurerm_mysql_firewall_rule.fw_rule_vault",
+  ]
+
   mysql {
     connection_url = "${random_string.username.result}@${var.server_name}:${random_string.password.result}@tcp(${azurerm_mysql_server.server.fqdn}:3306)/${var.db_name}"
   }
