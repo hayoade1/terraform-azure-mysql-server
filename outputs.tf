@@ -10,10 +10,6 @@ output "db_name" {
   value = "${var.db_name}"
 }
 
-output "vault_token" {
-  value = "${var.vault_token}"
-}
-
-output "vault_cluster" {
-  value = "${var.vault_cluster}"
+output "vault_mount" {
+  value = "${vault_mount.db.path}"
 }
