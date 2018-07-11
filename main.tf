@@ -35,16 +35,8 @@ resource "azurerm_mysql_database" "db" {
   collation           = "utf8_unicode_ci"
 }
 
-resource "azurerm_mysql_firewall_rule" "fw_rule" {
-  name                = "${var.service_name}"
-  resource_group_name = "${var.resource_group}"
-  server_name         = "${azurerm_mysql_server.server.name}"
-  start_ip_address    = "${data.azurerm_public_ip.app_node.ip_address}"
-  end_ip_address      = "${data.azurerm_public_ip.app_node.ip_address}"
-}
-
 resource "azurerm_mysql_firewall_rule" "fw_rule_vault" {
-  name                = "${var.service_name}"
+  name                = "${var.service_name}-vault"
   resource_group_name = "${var.resource_group}"
   server_name         = "${azurerm_mysql_server.server.name}"
   start_ip_address    = "${var.vault_cluster}"
