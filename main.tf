@@ -1,8 +1,3 @@
-data "azurerm_public_ip" "app_node" {
-  name                = "${var.ip_name}"
-  resource_group_name = "${var.resource_group}"
-}
-
 resource "azurerm_mysql_server" "server" {
   name                = "${var.server_name}"
   location            = "${var.location}"
