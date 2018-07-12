@@ -13,7 +13,7 @@ resource "vault_generic_secret" "credentials" {
 }
 
 resource "vault_mount" "db" {
-  path                      = "db-${var.server_name}-ro"
+  path                      = "db-${var.server_name}"
   type                      = "database"
   max_lease_ttl_seconds     = "${var.max_ttl}"
   default_lease_ttl_seconds = "${var.default_ttl}"
