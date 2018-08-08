@@ -8,7 +8,7 @@ data "template_file" "credentials" {
 }
 
 resource "vault_generic_secret" "credentials" {
-  path      = "secret/database/${var.server_name}/${var.db_name}/credentials"
+  path      = "secret/${var.service_name}/database/${var.server_name}/${var.db_name}/credentials"
   data_json = "${data.template_file.credentials.rendered}"
 }
 
@@ -39,7 +39,7 @@ data "template_file" "vault_backend_connection" {
 
 resource "vault_database_secret_backend_connection" "mysql" {
   backend       = "${vault_mount.db.path}"
-  name          = "${var.db_name}"
+  name          = "${var.service_name}-${var.server_name}-${var.db_name}"
   allowed_roles = ["mysql_crud", "mysql_ro"]
 
   depends_on = [
@@ -81,7 +81,7 @@ data "template_file" "mysql_ro" {
 }
 
 resource "vault_policy" "mysql_ro" {
-  name   = "${var.db_name}-mysql_ro"
+  name   = "${var.service_name}-${var.server_name}-${var.db_name}-mysql_ro"
   policy = "${data.template_file.mysql_ro.rendered}"
 }
 
@@ -95,6 +95,6 @@ data "template_file" "mysql_crud" {
 }
 
 resource "vault_policy" "mysql_crud" {
-  name   = "${var.db_name}-mysql_crud"
+  name   = "${var.service_name}-${var.server_name}-${var.db_name}-mysql_crud"
   policy = "${data.template_file.mysql_crud.rendered}"
 }
