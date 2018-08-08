@@ -76,6 +76,7 @@ data "template_file" "mysql_ro" {
 
   vars {
     db_name = "${var.db_name}"
+    service_name = "${var.service_name}"
   }
 }
 
@@ -89,6 +90,7 @@ data "template_file" "mysql_crud" {
 
   vars {
     db_name = "${var.db_name}"
+    service_name = "${var.service_name}"
   }
 }
 
