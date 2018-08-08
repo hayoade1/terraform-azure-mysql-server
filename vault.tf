@@ -75,7 +75,7 @@ data "template_file" "mysql_ro" {
   template = "${file("${path.module}/vault_policy_templates/mysql_ro.hcl.tpl")}"
 
   vars {
-    db_name = "${var.db_name}"
+    server_name = "${var.server_name}"
     service_name = "${var.service_name}"
   }
 }
@@ -89,7 +89,7 @@ data "template_file" "mysql_crud" {
   template = "${file("${path.module}/vault_policy_templates/mysql_crud.hcl.tpl")}"
 
   vars {
-    db_name = "${var.db_name}"
+    server_name = "${var.server_name}"
     service_name = "${var.service_name}"
   }
 }

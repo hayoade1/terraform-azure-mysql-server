@@ -1,3 +1,3 @@
-path "${service_name}/db-${db_name}/creds/mysql_crud" {
+path "${service_name}/${server_name}/creds/mysql_crud" {
   capabilities = ["read", "list"]
 }
