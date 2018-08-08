@@ -13,7 +13,7 @@ resource "vault_generic_secret" "credentials" {
 }
 
 resource "vault_mount" "db" {
-  path                      = "db-${var.server_name}"
+  path                      = "${var.service_name}/db-${var.server_name}"
   type                      = "database"
   max_lease_ttl_seconds     = "${var.max_ttl}"
   default_lease_ttl_seconds = "${var.default_ttl}"
@@ -94,5 +94,5 @@ data "template_file" "mysql_crud" {
 
 resource "vault_policy" "mysql_crud" {
   name   = "${var.db_name}-mysql_crud"
-  policy = "${data.template_file.mysql_ro.rendered}"
+  policy = "${data.template_file.mysql_crud.rendered}"
 }
