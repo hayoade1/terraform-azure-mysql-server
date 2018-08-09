@@ -39,7 +39,7 @@ data "template_file" "vault_backend_connection" {
 
 resource "vault_database_secret_backend_connection" "mysql" {
   backend       = "${vault_mount.db.path}"
-  name          = "${var.service_name}-${var.server_name}-${var.db_name}"
+  name          = "${var.db_name}"
   allowed_roles = ["mysql_crud", "mysql_ro"]
 
   depends_on = [
@@ -96,5 +96,19 @@ data "template_file" "mysql_crud" {
 
 resource "vault_policy" "mysql_crud" {
   name   = "${var.service_name}-${var.server_name}-${var.db_name}-mysql_crud"
+  policy = "${data.template_file.mysql_crud.rendered}"
+}
+
+data "template_file" "db_credentials" {
+  template = "${file("${path.module}/vault_policy_templates/db_credentials.tpl")}"
+
+  vars {
+    server_name = "${var.server_name}"
+    db_name = "${var.db_name}"
+  }
+}
+
+resource "vault_policy" "db_credentials" {
+  name = "${var.service_name}-${var.server_name}-${var.db_name}-credentials"
   policy = "${data.template_file.mysql_crud.rendered}"
 }
