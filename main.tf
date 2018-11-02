@@ -34,6 +34,6 @@ resource "azurerm_mysql_firewall_rule" "fw_rule_vault" {
   name                = "${var.service_name}-vault"
   resource_group_name = "${var.resource_group}"
   server_name         = "${azurerm_mysql_server.server.name}"
-  start_ip_address    = "${element(split(":", element(split("//", var.vault_cluster), 1), 0)}"
-  end_ip_address      = "${element(split(":", element(split("//", var.vault_cluster), 1), 0)}"
+  start_ip_address    = "${element(split(":", element(split("//", var.vault_addr), 1), 0)}"
+  end_ip_address      = "${element(split(":", element(split("//", var.vault_addr), 1), 0)}"
 }
