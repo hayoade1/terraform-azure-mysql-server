@@ -15,3 +15,6 @@ variable "max_ttl" {
 variable "default_ttl" {
   default = "30"
 }
+
+variable "vault_addr" {}
+variable "vault_token" {}
