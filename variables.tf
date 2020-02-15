@@ -6,15 +6,25 @@ variable "subscription_id" {}
 
 variable "tenant_id" {}
 
-variable "service_name" {}
+variable "service_name" {
+    default = "NextGen"
+  }
 
-variable "db_name" {}
+variable "db_name" {
+  default = "NextGenIAM"
+  }
 
-variable "resource_group" {}
+variable "resource_group" {
+  default = "NextGen"
+  }
 
-variable "server_name" {}
+variable "server_name" {
+  default = "NextGenIAMDB"
+  }
 
-variable "location" {}
+variable "location" {
+  default = "East US"
+  }
 
 variable "max_ttl" {
   default = "90"
