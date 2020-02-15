@@ -7,19 +7,19 @@ variable "subscription_id" {}
 variable "tenant_id" {}
 
 variable "service_name" {
-    default = "NextGen"
+    default = "nextgen"
   }
 
 variable "db_name" {
-  default = "NextGenIAM"
+  default = "nextgeniam"
   }
 
 variable "resource_group" {
-  default = "NextGen"
+  default = "nextgenresource"
   }
 
 variable "server_name" {
-  default = "NextGenIAMDB"
+  default = "nextgeniamserver"
   }
 
 variable "location" {
