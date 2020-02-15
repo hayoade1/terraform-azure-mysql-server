@@ -55,7 +55,7 @@ resource "vault_database_secret_backend_role" "mysql_crud" {
   backend             = "${vault_mount.db.path}"
   name                = "mysql_crud"
   db_name             = "${var.db_name}"
-  creation_statements = "CREATE USER \"{{name}}\"@'%' IDENTIFIED BY '{{password}}'; GRANT ALTER, CREATE ON ${var.db_name} to '{{name}}'@'%'; grant CREATE,DROP,SELECT,INSERT,UPDATE,DELETE on ${var.db_name}.* to '{{name}}'@'%'; flush privileges"
+  creation_statements = ["CREATE USER \"{{name}}\"@'%' IDENTIFIED BY '{{password}}',GRANT ALTER, CREATE ON ${var.db_name} to '{{name}}'@'%', grant CREATE,DROP,SELECT,INSERT,UPDATE,DELETE on ${var.db_name}.* to '{{name}}'@'%', flush privileges"]
   default_ttl         = "${var.default_ttl}"
   max_ttl             = "${var.max_ttl}"
 }
