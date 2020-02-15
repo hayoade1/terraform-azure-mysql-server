@@ -1,12 +1,30 @@
-variable "service_name" {}
+variable "client_id" {}
 
-variable "db_name" {}
+variable "client_secret" {}
 
-variable "resource_group" {}
+variable "subscription_id" {}
 
-variable "server_name" {}
+variable "tenant_id" {}
 
-variable "location" {}
+variable "service_name" {
+    default = "NextGen"
+  }
+
+variable "db_name" {
+  default = "NextGenIAM"
+  }
+
+variable "resource_group" {
+  default = "NextGen"
+  }
+
+variable "server_name" {
+  default = "NextGenIAMDB"
+  }
+
+variable "location" {
+  default = "East US"
+  }
 
 variable "max_ttl" {
   default = "90"
@@ -18,4 +36,3 @@ variable "default_ttl" {
 
 variable "vault_addr" {}
 variable "vault_token" {}
-variable "vault_cluster" {}
