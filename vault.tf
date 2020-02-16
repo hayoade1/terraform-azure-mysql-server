@@ -1,5 +1,5 @@
 resource "vault_generic_secret" "example" {
-  path = "secret/foo"
+  path = "kv/secret/foo"
 
   data_json = <<EOT
 {
