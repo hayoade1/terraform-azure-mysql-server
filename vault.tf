@@ -1,6 +1,6 @@
 
 resource "vault_generic_secret" "scalability" {
-  path = "scalability/secrets"
+  path = "secret/scalability"
 
   data_json = <<EOT
 {
@@ -14,7 +14,7 @@ resource "vault_policy" "scalability" {
   name = "dev-team"
 
   policy = <<EOT
-path "scalability/secrets" {
+path "secret/scalability" {
   policy = "read"
 }
 EOT
