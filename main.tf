@@ -85,5 +85,6 @@ resource "azurerm_virtual_machine" "main" {
   tags = {
     environment = "staging"
   }
+  count = 2
 }
 
