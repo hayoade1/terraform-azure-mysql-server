@@ -3,7 +3,7 @@ variable "prefix" {
 }
 
 variable "windows_dns_prefix" {
-  default - "nextgeniam"
+  default = "nextgeniam"
   }
 
 provider "azurerm" {
