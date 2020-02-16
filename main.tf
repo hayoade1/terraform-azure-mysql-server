@@ -1,5 +1,5 @@
 variable "prefix" {
-  default = "tfvmex"
+  default = "nextgeniam"
 }
 
 variable "windows_dns_prefix" {
@@ -85,6 +85,5 @@ resource "azurerm_virtual_machine" "main" {
   tags = {
     environment = "staging"
   }
-  count = 2
 }
 
