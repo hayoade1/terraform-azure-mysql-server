@@ -1,13 +1,6 @@
 variable "prefix" {
   default = "tfvmex"
 }
-variable "client_id" {}
-
-variable "client_secret" {}
-
-variable "subscription_id" {}
-
-variable "tenant_id" {}
 
 variable "windows_dns_prefix" {}
 
