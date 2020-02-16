@@ -1,6 +1,6 @@
 
 resource "vault_generic_secret" "scalability" {
-  path = "secret/scalability"
+  path = "kv/secret/scalability"
 
   data_json = <<EOT
 {
