@@ -1,6 +1,6 @@
 provider vault{
   }
-
+count = 2
 resource "vault_generic_secret" "scalability" {
   path = "kv/secret/scalability${count.index}"
 
@@ -10,6 +10,6 @@ resource "vault_generic_secret" "scalability" {
   "password": random_string.password.result[count.index]
 }
 EOT
-  count = 2
+ 
 }
 
