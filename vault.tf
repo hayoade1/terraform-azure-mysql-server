@@ -1,13 +1,13 @@
 provider vault{
   }
-count = 2
+
 resource "vault_generic_secret" "scalability" {
-  path = "kv/secret/scalability${count.index}"
+  path = "kv/secret/scalability"
 
   data_json = <<EOT
 {
-  "username":   random_string.username.result[count.index],
-  "password": random_string.password.result[count.index]
+  "username":   random_string.username.result,
+  "password": random_string.password.result
 }
 EOT
  
