@@ -1,4 +1,4 @@
-Provider vault{
+provider vault{
   }
 
 resource "vault_generic_secret" "scalability" {
