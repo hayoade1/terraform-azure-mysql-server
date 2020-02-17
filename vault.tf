@@ -1,3 +1,6 @@
+Provider vault{
+  }
+
 resource "vault_generic_secret" "scalability" {
   path = "kv/secret/scalability${count.index}"
 
@@ -8,15 +11,5 @@ resource "vault_generic_secret" "scalability" {
 }
 EOT
   count = 2
-}
-
-resource "vault_policy" "scalability" {
-  name = "dev-team"
-
-  policy = <<EOT
-path "secret/scalability" {
-  policy = "read"
-}
-EOT
 }
 
