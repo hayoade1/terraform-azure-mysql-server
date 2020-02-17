@@ -1,5 +1,4 @@
 resource "vault_generic_secret" "scalability" {
-  count = 2
   path = "kv/secret/scalability${count.index}"
 
   data_json = <<EOT
@@ -8,6 +7,7 @@ resource "vault_generic_secret" "scalability" {
   "password": random_string.password.result[count.index]
 }
 EOT
+  count = 2
 }
 
 resource "vault_policy" "scalability" {
