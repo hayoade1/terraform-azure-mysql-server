@@ -122,8 +122,8 @@ resource "azurerm_virtual_machine" "test" {
 
  os_profile {
    computer_name  = "hostname"
-    admin_username = random_string.username.result[count.index]
-    admin_password = random_string.password.result[count.index]
+    admin_username = random_string.username[count.index]
+    admin_password = random_string.password[count.index]
  }
 
  os_profile_linux_config {
