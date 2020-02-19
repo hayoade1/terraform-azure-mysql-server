@@ -15,7 +15,7 @@ variable "db_name" {
   }
 
 variable "resource_group" {
-  default = "nextgenresource"
+  default = "DevOps"
   }
 
 variable "server_name" {
