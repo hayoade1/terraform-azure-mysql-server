@@ -11,7 +11,7 @@ variable "service_name" {
   }
 
 variable "db_name" {
-  default = "nextgeniam"
+  default = "nextgeniamdemo"
   }
 
 variable "resource_group" {
